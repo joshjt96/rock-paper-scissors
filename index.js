@@ -1,18 +1,19 @@
-// Function called computerPlay that randomly returns rock, paper or scissors.
-// variables that store rock, paper and scissors
-// function called computerPlay that returns a random one of these
+function game() {
+    playRound();
+};
 
-// Initial code:
-// const rock = "Rock"
-// const paper = "Paper"
-// const scissors = "Scissors"
-// function computerPlay() {
-//     return 
-// }
+function playRound() {
+    const playerSelection = playerChoice();
+    const computerSelection = computerChoice();
+    return "You lose! " + playerSelection + " beats " + computerSelection
+};
 
-// Now going to use array to store the rock, paper, scissors
-function computerPlay() {
+function playerChoice() {
+    const userPrompt = prompt("Choose rock, paper or scissors.");
+    return userPrompt;
+};
+
+function computerChoice() {
     let rps = ['Rock', 'Paper', 'Scissors'];
     return rps[Math.floor(Math.random() * rps.length)]
 };
-
