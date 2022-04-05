@@ -1,0 +1,60 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.selections {
+    display: flex;
+    justify-content: center;
+    margin: 100px;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+}
+
+/* .current-score {
+    display: flex;
+    justify-content: center;
+} */
+
+.you {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.computer {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.result-selection {
+    display: flex;
+    justify-content: center;
+}
+
+.winner {
+    display: flex;
+    justify-content: center;
+}
+
+.selection {
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 3rem;
+    transition: 200ms;
+}
+
+.selection:hover {
+    transform: scale(1.3);
+}
