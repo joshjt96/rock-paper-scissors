@@ -1,10 +1,9 @@
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//       playRound();
-//     };
-// };
+function game() {
+    for (let i = 0; i < 5; i++) {
+      makeSelection();
+    };
+};
 
-// Array of objects for the user selection. Key value pairs, 'name' is key, 'rock' is value etc.
 const SELECTIONS = [
     {
         name: 'Rock',
@@ -33,45 +32,40 @@ startGame.forEach(startGame => {
 const yourScore = document.querySelector('[data-your-score');
 const computerScore = document.querySelector('[data-computer-score');
 const secondColumn = document.querySelector('[data-second-column]');
+const resultText = document.querySelector('[data-result-text');
 const selectionsDiv = document.querySelector('selections')
-// Select all buttons and their data, and store this in a variable:
+
 const buttonClicked = document.querySelectorAll('[data-selection');
-// Iterate through each button:
 buttonClicked.forEach(buttonClicked => {
-    // Add event listener to register a click on each button:
     buttonClicked.addEventListener('click', e => {
-        // Take the data of the button that user clicks and store it in a var:
         const playerChoice = buttonClicked.dataset.selection
-        // Match the user selection up with the value from the array of objects:
         const userSelection = SELECTIONS.find(selection => selection.name === playerChoice)
-        // Call function for user to make selection, and pass in the button click:
         makeSelection(userSelection)
     });
 });
-const body = document.body
-// Create function, console log to test working:
+
 function makeSelection(userSelection){
     const computerSelection = computerChoice();
     const youWin = winner(userSelection, computerSelection);
     const youLose = winner(computerSelection, userSelection);
-    addSelectionResult (computerSelection, youLose);
-    addSelectionResult (userSelection, youWin);
+    // addSelectionResult (computerSelection, youLose);
+    // addSelectionResult (userSelection, youWin);
     if (youWin) incrementScore(yourScore);
     if (youLose) incrementScore(computerScore);
     if (youWin) {
         const youWinText = document.createElement('h2');
-        youWinText.textContent = 'You win! ' + userSelection.name + ' beats ' + computerSelection.name;
-        body.append(youWinText);
+        youWinText.textContent = 'You win! ' + userSelection.emoji + ' beats ' + computerSelection.emoji;
+        resultText.after(youWinText);
     }
     if (youLose) {
         const youLoseText = document.createElement('h2');
-        youLoseText.textContent = 'You lose! ' + computerSelection.name + ' beats ' + userSelection.name;
-        body.append(youLoseText);
+        youLoseText.textContent = 'You lose! ' + computerSelection.emoji + ' beats ' + userSelection.emoji;
+        resultText.after(youLoseText);
     }
     else if (userSelection === computerSelection) {
         const  drawText = document.createElement('h2');
         drawText.textContent = 'Draw!';
-        body.append(drawText);
+        resultText.after(drawText);
     };
 };
 
@@ -79,13 +73,13 @@ function winner(userSelection, computerSelection){
     return userSelection.beats === computerSelection.name
 }
 
-function addSelectionResult(userSelection, winner) {
-    const div = document.createElement('div');
-    div.textContent = userSelection.emoji;
-    div.classList.add('result-selection');
-    if (winner) div.classList.add('winner');
-    secondColumn.after(div)
-}
+// function addSelectionResult(userSelection, winner) {
+//     const div = document.createElement('div');
+//     div.textContent = userSelection.emoji;
+//     div.classList.add('result-selection');
+//     if (winner) div.classList.add('winner');
+//     secondColumn.after(div)
+// }
 
 function computerChoice() {
     const randomChoice = Math.floor(Math.random() * SELECTIONS.length);
