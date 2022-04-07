@@ -1,9 +1,3 @@
-function game() {
-    for (let i = 0; i < 5; i++) {
-      makeSelection();
-    };
-};
-
 const SELECTIONS = [
     {
         name: 'Rock',
@@ -89,6 +83,12 @@ function computerChoice() {
 function incrementScore(scoreSpan) {
     scoreSpan.textContent = parseInt(scoreSpan.textContent) + 1
 };
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//       makeSelection();
+//     };
+// };
 
 // function playRound() {
 //     const playerSelection = userSelection();
